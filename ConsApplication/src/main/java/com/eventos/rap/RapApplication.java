@@ -1,14 +1,14 @@
-package com.eventos.rap1;
+package com.eventos.rap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.eventos.rap1", "com.eventos.config"})
-public class Rap1Application {
+@ComponentScan(basePackages = {"com.eventos.rap", "com.eventos.config"})
+public class RapApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Rap1Application.class, args);
-        System.out.println("Consumidor Rap 1 iniciado!");
+        SpringApplication.run(RapApplication.class, args);
+        System.out.println("Consumidor Rap iniciado!");
     }
 }

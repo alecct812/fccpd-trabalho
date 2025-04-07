@@ -12,100 +12,53 @@ public class RabbitMQConfig {
         return new TopicExchange("topic-exchange");
     }
 
-    // Filas para Rock 1
+    // Filas para Rock
     @Bean
-    public Queue rock1NovidadeQueue() {
-        return new Queue("novidade-rock1",false, false, true);
+    public Queue rockNovidadeQueue() {
+        return new Queue("rock-novidade",false, false, true);
     }
 
     @Bean
-    public Queue rock1AlertaQueue() {
-        return new Queue("fila-alerta-rock1",false, false, true);
+    public Queue rockAlertaQueue() {
+        return new Queue("rock-informacao",false, false, true);
     }
 
     @Bean
-    public Queue rock1MudancaQueue() {
-        return new Queue("fila-mudanca-rock1",false, false, true);
+    public Queue rockMudancaQueue() {
+        return new Queue("rock-informacao",false, false, true);
     }
 
-    // Filas para Rock 2
+    
+    // Filas para Pop
     @Bean
-    public Queue rock2NovidadeQueue() {
-        return new Queue("novidade-rock2",false, false, true);
-    }
-
-    @Bean
-    public Queue rock2AlertaQueue() {
-        return new Queue("fila-alerta-rock2",false, false, true);
+    public Queue popNovidadeQueue() {
+        return new Queue("pop-novidade",false, false, true);
     }
 
     @Bean
-    public Queue rock2MudancaQueue() {
-        return new Queue("fila-mudanca-rock2",false, false, true);
-    }
-
-    // Filas para Pop 1
-    @Bean
-    public Queue pop1NovidadeQueue() {
-        return new Queue("novidade-pop1",false, false, true);
+    public Queue popAlertaQueue() {
+        return new Queue("pop-informacao",false, false, true);
     }
 
     @Bean
-    public Queue pop1AlertaQueue() {
-        return new Queue("fila-alerta-pop1",false, false, true);
+    public Queue popMudancaQueue() {
+        return new Queue("pop-informacao",false, false, true);
+    }
+
+    // Filas para Rap
+    @Bean
+    public Queue rapNovidadeQueue() {
+        return new Queue("rap-novidade",false, false, true);
     }
 
     @Bean
-    public Queue pop1MudancaQueue() {
-        return new Queue("fila-mudanca-pop1",false, false, true);
-    }
-
-    // Filas para Pop 2
-    @Bean
-    public Queue pop2NovidadeQueue() {
-        return new Queue("novidade-pop2",false, false, true);
+    public Queue rapAlertaQueue() {
+        return new Queue("rap-informacao",false, false, true);
     }
 
     @Bean
-    public Queue pop2AlertaQueue() {
-        return new Queue("fila-alerta-pop2",false, false, true);
-    }
-
-    @Bean
-    public Queue pop2MudancaQueue() {
-        return new Queue("fila-mudanca-pop2",false, false, true);
-    }
-
-    // Filas para Rap 1
-    @Bean
-    public Queue rap1NovidadeQueue() {
-        return new Queue("novidade-rap1",false, false, true);
-    }
-
-    @Bean
-    public Queue rap1AlertaQueue() {
-        return new Queue("fila-alerta-rap1",false, false, true);
-    }
-
-    @Bean
-    public Queue rap1MudancaQueue() {
-        return new Queue("fila-mudanca-rap1",false, false, true);
-    }
-
-    // Filas para Rap 2
-    @Bean
-    public Queue rap2NovidadeQueue() {
-        return new Queue("novidade-rap2",false, false, true);
-    }
-
-    @Bean
-    public Queue rap2AlertaQueue() {
-        return new Queue("fila-alerta-rap2",false, false, true);
-    }
-
-    @Bean
-    public Queue rap2MudancaQueue() {
-        return new Queue("fila-mudanca-rap2",false, false, true);
+    public Queue rapMudancaQueue() {
+        return new Queue("rap-informacao",false, false, true);
     }
 
     // Fila para Auditoria
@@ -114,100 +67,53 @@ public class RabbitMQConfig {
         return new Queue("auditoria-queue",false, false, true);
     }
 
-    // Bindings para Rock 1
+    // Bindings para Rock
     @Bean
-    public Binding rock1NovidadeBinding(TopicExchange topicExchange, Queue rock1NovidadeQueue) {
-        return BindingBuilder.bind(rock1NovidadeQueue).to(topicExchange).with("novidade");
+    public Binding rockNovidadeBinding(TopicExchange topicExchange, Queue rockNovidadeQueue) {
+        return BindingBuilder.bind(rockNovidadeQueue).to(topicExchange).with("novidade");
     }
 
     @Bean
-    public Binding rock1AlertaBinding(TopicExchange topicExchange, Queue rock1AlertaQueue) {
-        return BindingBuilder.bind(rock1AlertaQueue).to(topicExchange).with("alerta.rock");
+    public Binding rockAlertaBinding(TopicExchange topicExchange, Queue rockAlertaQueue) {
+        return BindingBuilder.bind(rockAlertaQueue).to(topicExchange).with("alerta.rock");
     }
 
     @Bean
-    public Binding rock1MudancaBinding(TopicExchange topicExchange, Queue rock1MudancaQueue) {
-        return BindingBuilder.bind(rock1MudancaQueue).to(topicExchange).with("mudanca.rock");
+    public Binding rockMudancaBinding(TopicExchange topicExchange, Queue rockMudancaQueue) {
+        return BindingBuilder.bind(rockMudancaQueue).to(topicExchange).with("mudanca.rock");
     }
 
-    // Bindings para Rock 2
+  
+    // Bindings para Pop
     @Bean
-    public Binding rock2NovidadeBinding(TopicExchange topicExchange, Queue rock2NovidadeQueue) {
-        return BindingBuilder.bind(rock2NovidadeQueue).to(topicExchange).with("novidade");
-    }
-
-    @Bean
-    public Binding rock2AlertaBinding(TopicExchange topicExchange, Queue rock2AlertaQueue) {
-        return BindingBuilder.bind(rock2AlertaQueue).to(topicExchange).with("alerta.rock");
+    public Binding popNovidadeBinding(TopicExchange topicExchange, Queue popNovidadeQueue) {
+        return BindingBuilder.bind(popNovidadeQueue).to(topicExchange).with("novidade");
     }
 
     @Bean
-    public Binding rock2MudancaBinding(TopicExchange topicExchange, Queue rock2MudancaQueue) {
-        return BindingBuilder.bind(rock2MudancaQueue).to(topicExchange).with("mudanca.rock");
-    }
-
-    // Bindings para Pop 1
-    @Bean
-    public Binding pop1NovidadeBinding(TopicExchange topicExchange, Queue pop1NovidadeQueue) {
-        return BindingBuilder.bind(pop1NovidadeQueue).to(topicExchange).with("novidade");
+    public Binding popAlertaBinding(TopicExchange topicExchange, Queue popAlertaQueue) {
+        return BindingBuilder.bind(popAlertaQueue).to(topicExchange).with("alerta.pop");
     }
 
     @Bean
-    public Binding pop1AlertaBinding(TopicExchange topicExchange, Queue pop1AlertaQueue) {
-        return BindingBuilder.bind(pop1AlertaQueue).to(topicExchange).with("alerta.pop");
+    public Binding popMudancaBinding(TopicExchange topicExchange, Queue popMudancaQueue) {
+        return BindingBuilder.bind(popMudancaQueue).to(topicExchange).with("mudanca.pop");
+    }
+
+    // Bindings para Rap
+    @Bean
+    public Binding rapNovidadeBinding(TopicExchange topicExchange, Queue rapNovidadeQueue) {
+        return BindingBuilder.bind(rapNovidadeQueue).to(topicExchange).with("novidade");
     }
 
     @Bean
-    public Binding pop1MudancaBinding(TopicExchange topicExchange, Queue pop1MudancaQueue) {
-        return BindingBuilder.bind(pop1MudancaQueue).to(topicExchange).with("mudanca.pop");
-    }
-
-    // Bindings para Pop 2
-    @Bean
-    public Binding pop2NovidadeBinding(TopicExchange topicExchange, Queue pop2NovidadeQueue) {
-        return BindingBuilder.bind(pop2NovidadeQueue).to(topicExchange).with("novidade");
+    public Binding rapAlertaBinding(TopicExchange topicExchange, Queue rapAlertaQueue) {
+        return BindingBuilder.bind(rapAlertaQueue).to(topicExchange).with("alerta.rap");
     }
 
     @Bean
-    public Binding pop2AlertaBinding(TopicExchange topicExchange, Queue pop2AlertaQueue) {
-        return BindingBuilder.bind(pop2AlertaQueue).to(topicExchange).with("alerta.pop");
-    }
-
-    @Bean
-    public Binding pop2MudancaBinding(TopicExchange topicExchange, Queue pop2MudancaQueue) {
-        return BindingBuilder.bind(pop2MudancaQueue).to(topicExchange).with("mudanca.pop");
-    }
-
-    // Bindings para Rap 1
-    @Bean
-    public Binding rap1NovidadeBinding(TopicExchange topicExchange, Queue rap1NovidadeQueue) {
-        return BindingBuilder.bind(rap1NovidadeQueue).to(topicExchange).with("novidade");
-    }
-
-    @Bean
-    public Binding rap1AlertaBinding(TopicExchange topicExchange, Queue rap1AlertaQueue) {
-        return BindingBuilder.bind(rap1AlertaQueue).to(topicExchange).with("alerta.rap");
-    }
-
-    @Bean
-    public Binding rap1MudancaBinding(TopicExchange topicExchange, Queue rap1MudancaQueue) {
-        return BindingBuilder.bind(rap1MudancaQueue).to(topicExchange).with("mudanca.rap");
-    }
-
-    // Bindings para Rap 2
-    @Bean
-    public Binding rap2NovidadeBinding(TopicExchange topicExchange, Queue rap2NovidadeQueue) {
-        return BindingBuilder.bind(rap2NovidadeQueue).to(topicExchange).with("novidade");
-    }
-
-    @Bean
-    public Binding rap2AlertaBinding(TopicExchange topicExchange, Queue rap2AlertaQueue) {
-        return BindingBuilder.bind(rap2AlertaQueue).to(topicExchange).with("alerta.rap");
-    }
-
-    @Bean
-    public Binding rap2MudancaBinding(TopicExchange topicExchange, Queue rap2MudancaQueue) {
-        return BindingBuilder.bind(rap2MudancaQueue).to(topicExchange).with("mudanca.rap");
+    public Binding rapMudancaBinding(TopicExchange topicExchange, Queue rapMudancaQueue) {
+        return BindingBuilder.bind(rapMudancaQueue).to(topicExchange).with("mudanca.rap");
     }
 
     // Binding para Auditoria
