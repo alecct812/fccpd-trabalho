@@ -29,7 +29,7 @@ def enviar_novidade():
                f"Atração principal: {atracao_principal}\n\n" + \
                f"Ingressos disponíveis! Não perca a chance de participar. Garanta o seu ingresso agora em: {link_ingressos}\n\n" + \
                "Nos vemos lá! 🎶\n" + \
-               "Com amor, [Nome da Empresa] – Seu guia para eventos incríveis!"
+               "Com amor, Sympla – Seu guia para eventos incríveis!"
     
     # Enviando para todos os consumidores
     channel.basic_publish(exchange='topic-exchange',
@@ -53,7 +53,7 @@ def enviar_alerta():
                f"Local: {local_evento}\n\n" + \
                "Prepare-se para curtir esse evento incrível! 🎶\n" + \
                "Nos vemos lá!\n" + \
-               "Com amor, [Nome da Empresa] – Seu guia para eventos incríveis!"
+               "Com amor, Sympla – Seu guia para eventos incríveis!"
     
     # Enviando apenas para os consumidores do gênero específico
     channel.basic_publish(exchange='topic-exchange',
@@ -76,7 +76,7 @@ def enviar_mudanca():
                f"Local: {local_evento}\n\n" + \
                "Certifique-se de ajustar sua agenda para o novo horário e data!\n\n" + \
                "Nos vemos lá! 🎶\n" + \
-               "Com amor, [Nome da Empresa] – Seu guia para eventos incríveis!"
+               "Com amor, Sympla – Seu guia para eventos incríveis!"
     
     # Enviando apenas para os consumidores do gênero específico
     channel.basic_publish(exchange='topic-exchange',

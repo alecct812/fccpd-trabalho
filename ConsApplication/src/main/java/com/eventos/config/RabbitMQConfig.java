@@ -19,15 +19,9 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue rockAlertaQueue() {
+    public Queue rockInformacaoQueue() {
         return new Queue("rock-informacao",false, false, true);
     }
-
-    @Bean
-    public Queue rockMudancaQueue() {
-        return new Queue("rock-informacao",false, false, true);
-    }
-
     
     // Filas para Pop
     @Bean
@@ -36,12 +30,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue popAlertaQueue() {
-        return new Queue("pop-informacao",false, false, true);
-    }
-
-    @Bean
-    public Queue popMudancaQueue() {
+    public Queue popInformacaoQueue() {
         return new Queue("pop-informacao",false, false, true);
     }
 
@@ -52,12 +41,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue rapAlertaQueue() {
-        return new Queue("rap-informacao",false, false, true);
-    }
-
-    @Bean
-    public Queue rapMudancaQueue() {
+    public Queue rapInformacaoQueue() {
         return new Queue("rap-informacao",false, false, true);
     }
 
@@ -74,13 +58,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding rockAlertaBinding(TopicExchange topicExchange, Queue rockAlertaQueue) {
-        return BindingBuilder.bind(rockAlertaQueue).to(topicExchange).with("alerta.rock");
+    public Binding rockAlertaBinding(TopicExchange topicExchange, Queue rockInformacaoQueue) {
+        return BindingBuilder.bind(rockInformacaoQueue).to(topicExchange).with("alerta.rock");
     }
 
     @Bean
-    public Binding rockMudancaBinding(TopicExchange topicExchange, Queue rockMudancaQueue) {
-        return BindingBuilder.bind(rockMudancaQueue).to(topicExchange).with("mudanca.rock");
+    public Binding rockMudancaBinding(TopicExchange topicExchange, Queue rockInformacaoQueue) {
+        return BindingBuilder.bind(rockInformacaoQueue).to(topicExchange).with("mudanca.rock");
     }
 
   
@@ -91,13 +75,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding popAlertaBinding(TopicExchange topicExchange, Queue popAlertaQueue) {
-        return BindingBuilder.bind(popAlertaQueue).to(topicExchange).with("alerta.pop");
+    public Binding popAlertaBinding(TopicExchange topicExchange, Queue popInformacaoQueue) {
+        return BindingBuilder.bind(popInformacaoQueue).to(topicExchange).with("alerta.pop");
     }
 
     @Bean
-    public Binding popMudancaBinding(TopicExchange topicExchange, Queue popMudancaQueue) {
-        return BindingBuilder.bind(popMudancaQueue).to(topicExchange).with("mudanca.pop");
+    public Binding popMudancaBinding(TopicExchange topicExchange, Queue popInformacaoQueue) {
+        return BindingBuilder.bind(popInformacaoQueue).to(topicExchange).with("mudanca.pop");
     }
 
     // Bindings para Rap
@@ -107,13 +91,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding rapAlertaBinding(TopicExchange topicExchange, Queue rapAlertaQueue) {
-        return BindingBuilder.bind(rapAlertaQueue).to(topicExchange).with("alerta.rap");
+    public Binding rapAlertaBinding(TopicExchange topicExchange, Queue rapInformacaoQueue) {
+        return BindingBuilder.bind(rapInformacaoQueue).to(topicExchange).with("alerta.rap");
     }
 
     @Bean
-    public Binding rapMudancaBinding(TopicExchange topicExchange, Queue rapMudancaQueue) {
-        return BindingBuilder.bind(rapMudancaQueue).to(topicExchange).with("mudanca.rap");
+    public Binding rapMudancaBinding(TopicExchange topicExchange, Queue rapInformacaoQueue) {
+        return BindingBuilder.bind(rapInformacaoQueue).to(topicExchange).with("mudanca.rap");
     }
 
     // Binding para Auditoria
