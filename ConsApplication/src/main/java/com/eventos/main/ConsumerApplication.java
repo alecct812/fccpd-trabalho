@@ -1,15 +1,13 @@
 package com.eventos.main;
 
-import org.springframework.boot.SpringApplication;
+import com.eventos.pop.PopApplication;
+import com.eventos.rap.RapApplication;
+import com.eventos.rock.RockApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
-import java.util.Collections;
 import java.util.Scanner;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.eventos.main", "com.eventos.config"})
 public class ConsumerApplication {
 
     public static void main(String[] args) {
@@ -21,22 +19,21 @@ public class ConsumerApplication {
         System.out.print("Digite sua opção: ");
 
         int opcao = scanner.nextInt();
-        String genero = switch (opcao) {
-            case 1 -> "pop";
-            case 2 -> "rap";
-            case 3 -> "rock";
-            default -> {
-                System.out.println("Opção inválida.");
-                yield null;
-            }
-        };
 
-        if (genero != null) {
-            SpringApplication app = new SpringApplication(ConsumerApplication.class);
-            app.setDefaultProperties(Collections.singletonMap("genero.ativo", genero));
-            ConfigurableApplicationContext context = app.run(args);
+        switch (opcao) {
+            case 1 -> {
+                System.out.println("Iniciando consumidor Pop...");
+                PopApplication.popRun(args);
+            }
+            case 2 -> {
+                System.out.println("Iniciando consumidor Rap...");
+                RapApplication.rapRun(args);
+            }
+            case 3 -> {
+                System.out.println("Iniciando consumidor Rock...");
+                RockApplication.rockRun(args);
+            }
+            default -> System.out.println("Opção inválida.");
         }
-        
-        System.out.println("Consumidor " + genero.substring(0, 1).toUpperCase() + genero.substring(1) + " iniciado!");
     }
 }

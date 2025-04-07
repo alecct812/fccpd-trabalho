@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.eventos.rock", "com.eventos.config"})
 public class RockApplication {
-    public static void main(String[] args) {
+    public static void rockRun(String[] args) {
         SpringApplication.run(RockApplication.class, args);
         System.out.println("Consumidor Rock iniciado!");
     }
