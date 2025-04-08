@@ -2,6 +2,12 @@
 
 Este projeto é um sistema distribuído de gerenciamento de eventos que utiliza RabbitMQ para filas de mensagens. Ele consiste em dois componentes principais: um produtor (Python) e consumidores (Java Spring Boot) para diferentes gêneros musicais.
 
+## Colaboradores
+
+<p><a href="https://github.com/alecct812">Alec Theotônio</a> 
+<p><a href="https://github.com/lizandravieira">Lizandra Vieira</a> 
+<p><a href="https://github.com/Ferraz27">Lucas Ferraz</a> 
+
 ## Visão Geral do Projeto
 
 O sistema permite:
