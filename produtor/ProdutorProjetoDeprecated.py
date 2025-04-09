@@ -13,7 +13,6 @@ channel = connection.channel()
 channel.exchange_declare(exchange='topic-exchange', exchange_type='topic', durable=True)
 
 def enviar_novidade():
-    nome_consumidor = input('Digite o nome do consumidor: ')
     nome_evento = input('Digite o nome do evento: ')
     data_evento = input('Digite a data do evento (DD/MM/AAAA): ')
     horario_evento = input('Digite o horário do evento (HH:MM): ')
@@ -21,8 +20,7 @@ def enviar_novidade():
     atracao_principal = input('Digite a atração principal: ')
     link_ingressos = input('Digite o link para compra de ingressos: ')
     
-    mensagem = f"Olá {nome_consumidor}!\n\n" + \
-               f"Temos uma novidade para você! Chegou o evento {nome_evento}!\n" + \
+    mensagem = f"Temos uma novidade para você! Chegou o evento {nome_evento}!\n" + \
                f"Data: {data_evento}\n" + \
                f"Horário: {horario_evento}\n" + \
                f"Local: {local_evento}\n" + \
@@ -38,7 +36,6 @@ def enviar_novidade():
     print(f" [Mensagem de Novidade] Enviada -> <{mensagem}>")
 
 def enviar_alerta():
-    nome_consumidor = input('Digite o nome do consumidor: ')
     nome_evento = input('Digite o nome do evento: ')
     horas_restantes = input('Digite quantas horas faltam para o evento: ')
     data_evento = input('Digite a data do evento (DD/MM/AAAA): ')
@@ -46,8 +43,7 @@ def enviar_alerta():
     local_evento = input('Digite o local do evento: ')
     genero = input('Digite o gênero do evento (rock/pop/rap): ').lower()
     
-    mensagem = f"Olá {nome_consumidor}!\n\n" + \
-               f"Lembrete: o evento {nome_evento} começa em {horas_restantes} horas!\n" + \
+    mensagem = f"Lembrete: o evento {nome_evento} começa em {horas_restantes} horas!\n" + \
                f"Data: {data_evento}\n" + \
                f"Horário: {horario_evento}\n" + \
                f"Local: {local_evento}\n\n" + \
@@ -57,20 +53,18 @@ def enviar_alerta():
     
     # Enviando apenas para os consumidores do gênero específico
     channel.basic_publish(exchange='topic-exchange',
-                         routing_key=f'alerta.{genero}',
+                         routing_key=f'informacao.{genero}',
                          body=mensagem)
     print(f" [Mensagem de Alerta] Enviada -> <{mensagem}>")
 
 def enviar_mudanca():
-    nome_consumidor = input('Digite o nome do consumidor: ')
     nome_evento = input('Digite o nome do evento: ')
     nova_data_evento = input('Digite a nova data do evento (DD/MM/AAAA): ')
     novo_horario_evento = input('Digite o novo horário do evento (HH:MM): ')
     local_evento = input('Digite o local do evento: ')
     genero = input('Digite o gênero do evento (rock/pop/rap): ').lower()
     
-    mensagem = f"Olá {nome_consumidor}!\n\n" + \
-               f"Atenção! O evento {nome_evento} sofreu uma alteração.\n" + \
+    mensagem = f"Atenção! O evento {nome_evento} sofreu uma alteração.\n" + \
                f"Nova Data: {nova_data_evento}\n" + \
                f"Novo Horário: {novo_horario_evento}\n" + \
                f"Local: {local_evento}\n\n" + \
@@ -80,7 +74,7 @@ def enviar_mudanca():
     
     # Enviando apenas para os consumidores do gênero específico
     channel.basic_publish(exchange='topic-exchange',
-                         routing_key=f'mudanca.{genero}',
+                         routing_key=f'informacao.{genero}',
                          body=mensagem)
     print(f" [Mensagem de Mudança] Enviada -> <{mensagem}>")
 

@@ -14,7 +14,7 @@ def enviar_mudanca():
 
     channel.basic_publish(
         exchange='topic-exchange',
-        routing_key=f'mudanca.{genero}',
+        routing_key=f'informacao.{genero}',
         body=mensagem
     )
 

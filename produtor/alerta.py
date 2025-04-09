@@ -15,7 +15,7 @@ def enviar_alerta():
 
     channel.basic_publish(
         exchange='topic-exchange',
-        routing_key=f'alerta.{genero}',
+        routing_key=f'informacao.{genero}',
         body=mensagem
     )
 

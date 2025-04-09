@@ -48,7 +48,7 @@ public class RabbitMQConfig {
     // Fila para Auditoria
     @Bean
     public Queue auditoriaQueue() {
-        return new Queue("auditoria-queue",false, false, true);
+        return new Queue("auditoria-queue",true, false, false);
     }
 
     // Bindings para Rock
@@ -58,15 +58,9 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding rockAlertaBinding(TopicExchange topicExchange, Queue rockInformacaoQueue) {
-        return BindingBuilder.bind(rockInformacaoQueue).to(topicExchange).with("alerta.rock");
+    public Binding rockInformacaoBinding(TopicExchange topicExchange, Queue rockInformacaoQueue) {
+        return BindingBuilder.bind(rockInformacaoQueue).to(topicExchange).with("informacao.rock");
     }
-
-    @Bean
-    public Binding rockMudancaBinding(TopicExchange topicExchange, Queue rockInformacaoQueue) {
-        return BindingBuilder.bind(rockInformacaoQueue).to(topicExchange).with("mudanca.rock");
-    }
-
   
     // Bindings para Pop
     @Bean
@@ -75,13 +69,8 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding popAlertaBinding(TopicExchange topicExchange, Queue popInformacaoQueue) {
-        return BindingBuilder.bind(popInformacaoQueue).to(topicExchange).with("alerta.pop");
-    }
-
-    @Bean
-    public Binding popMudancaBinding(TopicExchange topicExchange, Queue popInformacaoQueue) {
-        return BindingBuilder.bind(popInformacaoQueue).to(topicExchange).with("mudanca.pop");
+    public Binding popInformacaoBinding(TopicExchange topicExchange, Queue popInformacaoQueue) {
+        return BindingBuilder.bind(popInformacaoQueue).to(topicExchange).with("informacao.pop");
     }
 
     // Bindings para Rap
@@ -91,13 +80,8 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding rapAlertaBinding(TopicExchange topicExchange, Queue rapInformacaoQueue) {
-        return BindingBuilder.bind(rapInformacaoQueue).to(topicExchange).with("alerta.rap");
-    }
-
-    @Bean
-    public Binding rapMudancaBinding(TopicExchange topicExchange, Queue rapInformacaoQueue) {
-        return BindingBuilder.bind(rapInformacaoQueue).to(topicExchange).with("mudanca.rap");
+    public Binding rapInformacaoBinding(TopicExchange topicExchange, Queue rapInformacaoQueue) {
+        return BindingBuilder.bind(rapInformacaoQueue).to(topicExchange).with("informacao.rap");
     }
 
     // Binding para Auditoria
